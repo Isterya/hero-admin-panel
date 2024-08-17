@@ -1,16 +1,10 @@
 {
   "heroes": [
     {
-      "id": 2,
-      "name": "Неизвестный герой",
-      "description": "Скрывающийся в тени",
-      "element": "wind"
-    },
-    {
-      "id": 3,
-      "name": "Морской герой",
-      "description": "Как аквамен, но не из DC",
-      "element": "water"
+      "id": "2245a3d5-74ae-4f8c-9be5-880e2211126c",
+      "name": "Tony",
+      "description": "I'm really fucking cool",
+      "element": "fire"
     }
   ],
   "filters": [
