@@ -1,17 +1,17 @@
 {
   "heroes": [
     {
-      "id": "2245a3d5-74ae-4f8c-9be5-880e2211126c",
+      "id": "b28cf0db-3313-4d19-9aec-84ed0a9714a4",
       "name": "Tony",
-      "description": "I'm really fucking cool",
-      "element": "fire"
+      "description": "I'm really fucking cold",
+      "element": "Огонь"
     }
   ],
   "filters": [
-    "all",
-    "fire",
-    "water",
-    "wind",
-    "earth"
+    "Все",
+    "Огонь",
+    "Вода",
+    "Ветер",
+    "Земля"
   ]
 }
