@@ -5,12 +5,6 @@
       "name": "Tony",
       "description": "I'm really fucking cold",
       "element": "fire"
-    },
-    {
-      "id": "b58b0a34-e58d-41db-9671-3bff792d0e3a",
-      "name": "Superman",
-      "description": "Water, water, water!",
-      "element": "water"
     }
   ],
   "filters": [
