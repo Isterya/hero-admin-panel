@@ -11,33 +11,39 @@
       "name": "Superman",
       "description": "Water, water, water!",
       "element": "water"
+    },
+    {
+      "id": "a91f435f-23fb-4dbf-aaed-1d993d23b88f",
+      "name": "Hero",
+      "description": "We need a hero...",
+      "element": "earth"
     }
   ],
   "filters": [
     {
-      "name": "Все",
-      "element": "all",
-      "class": "btn btn-outline-dark"
+      "name": "all",
+      "label": "Все",
+      "className": "btn btn-outline-dark"
     },
     {
-      "name": "Огонь",
-      "element": "fire",
-      "class": "btn btn-danger"
+      "name": "fire",
+      "label": "Огонь",
+      "className": "btn btn-danger"
     },
     {
-      "name": "Вода",
-      "element": "water",
-      "class": "btn btn-primary"
+      "name": "water",
+      "label": "Вода",
+      "className": "btn btn-primary"
     },
     {
-      "name": "Ветер",
-      "element": "wind",
-      "class": "btn btn-success"
+      "name": "wind",
+      "label": "Ветер",
+      "className": "btn btn-success"
     },
     {
-      "name": "Земля",
-      "element": "earth",
-      "class": "btn btn-secondary"
+      "name": "earth",
+      "label": "Земля",
+      "className": "btn btn-secondary"
     }
   ]
 }

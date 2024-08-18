@@ -16,7 +16,7 @@ const HeroesAddForm = () => {
    useEffect(() => {
       request('http://localhost:3001/filters')
          .then((data) => {
-            const filteredElements = data.filter((filter) => filter.name !== 'Все');
+            const filteredElements = data.filter((filter) => filter.name !== 'all');
             setFilters(filteredElements);
          })
          .catch((error) => console.log(error));
@@ -60,14 +60,14 @@ const HeroesAddForm = () => {
          </div>
 
          <div className="mb-3">
-            <label htmlFor="text" className="form-label fs-4">
+            <label htmlFor="description" className="form-label fs-4">
                Описание
             </label>
             <textarea
                required
-               name="text"
+               name="description"
                className="form-control"
-               id="text"
+               id="description"
                placeholder="Что я умею?"
                value={description}
                onChange={(e) => setDescription(e.target.value)}
@@ -89,8 +89,8 @@ const HeroesAddForm = () => {
             >
                <option>Я владею элементом...</option>
                {filters.map((filter) => (
-                  <option key={filter.element} value={filter.element}>
-                     {filter.name}
+                  <option key={filter.name} value={filter.name}>
+                     {filter.label}
                   </option>
                ))}
             </select>
