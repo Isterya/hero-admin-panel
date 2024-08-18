@@ -11,12 +11,6 @@
       "name": "Superman",
       "description": "Water, water, water!",
       "element": "water"
-    },
-    {
-      "id": "a91f435f-23fb-4dbf-aaed-1d993d23b88f",
-      "name": "Hero",
-      "description": "We need a hero...",
-      "element": "earth"
     }
   ],
   "filters": [
