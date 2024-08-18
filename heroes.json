@@ -4,14 +4,40 @@
       "id": "b28cf0db-3313-4d19-9aec-84ed0a9714a4",
       "name": "Tony",
       "description": "I'm really fucking cold",
-      "element": "Огонь"
+      "element": "fire"
+    },
+    {
+      "id": "b58b0a34-e58d-41db-9671-3bff792d0e3a",
+      "name": "Superman",
+      "description": "Water, water, water!",
+      "element": "water"
     }
   ],
   "filters": [
-    "Все",
-    "Огонь",
-    "Вода",
-    "Ветер",
-    "Земля"
+    {
+      "name": "Все",
+      "element": "all",
+      "class": "btn btn-outline-dark"
+    },
+    {
+      "name": "Огонь",
+      "element": "fire",
+      "class": "btn btn-danger"
+    },
+    {
+      "name": "Вода",
+      "element": "water",
+      "class": "btn btn-primary"
+    },
+    {
+      "name": "Ветер",
+      "element": "wind",
+      "class": "btn btn-success"
+    },
+    {
+      "name": "Земля",
+      "element": "earth",
+      "class": "btn btn-secondary"
+    }
   ]
 }

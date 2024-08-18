@@ -16,7 +16,7 @@ const HeroesAddForm = () => {
    useEffect(() => {
       request('http://localhost:3001/filters')
          .then((data) => {
-            const filteredElements = data.filter((filter) => filter !== 'Все');
+            const filteredElements = data.filter((filter) => filter.name !== 'Все');
             setFilters(filteredElements);
          })
          .catch((error) => console.log(error));
@@ -88,9 +88,9 @@ const HeroesAddForm = () => {
                onChange={(e) => setElement(e.target.value)}
             >
                <option>Я владею элементом...</option>
-               {filters.map((filter, index) => (
-                  <option key={index} value={filter}>
-                     {filter}
+               {filters.map((filter) => (
+                  <option key={filter.element} value={filter.element}>
+                     {filter.name}
                   </option>
                ))}
             </select>
