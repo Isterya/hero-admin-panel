@@ -1,10 +1,16 @@
 {
   "heroes": [
     {
-      "id": "b28cf0db-3313-4d19-9aec-84ed0a9714a4",
-      "name": "Tony",
-      "description": "I'm really fucking cold",
-      "element": "fire"
+      "id": "31a6e775-577f-4a7a-b241-213e0bd30d24",
+      "name": "Hero",
+      "description": "I can a lot",
+      "element": "earth"
+    },
+    {
+      "id": "afad55d6-7074-4f40-9023-fbe2fef4398d",
+      "name": "Богдан",
+      "description": "dd",
+      "element": "wind"
     }
   ],
   "filters": [

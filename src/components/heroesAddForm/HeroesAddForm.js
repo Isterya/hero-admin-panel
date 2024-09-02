@@ -1,44 +1,57 @@
-import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { useHttp } from '../../hooks/http.hook';
-import { heroAdded } from '../../actions';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
-const HeroesAddForm = () => {
-   const [name, setName] = useState('');
-   const [description, setDescription] = useState('');
-   const [element, setElement] = useState('');
-   const [filters, setFilters] = useState([]);
+import { heroAdded } from '../../actions';
 
+const HeroesAddForm = () => {
+   const [heroName, setHeroName] = useState('');
+   const [heroDescr, setHeroDescr] = useState('');
+   const [heroElement, setHeroElement] = useState('');
+
+   const { filters, filtersLoadingStatus } = useSelector((state) => state.filters);
    const dispatch = useDispatch();
    const { request } = useHttp();
 
-   useEffect(() => {
-      request('http://localhost:3001/filters')
-         .then((data) => {
-            const filteredElements = data.filter((filter) => filter.name !== 'all');
-            setFilters(filteredElements);
-         })
-         .catch((error) => console.log(error));
-   }, [request]);
-
    const onSubmitHandler = (e) => {
       e.preventDefault();
-
       const newHero = {
          id: uuidv4(),
-         name,
-         description,
-         element,
+         name: heroName,
+         description: heroDescr,
+         element: heroElement,
       };
 
       request('http://localhost:3001/heroes', 'POST', JSON.stringify(newHero))
-         .then((data) => dispatch(heroAdded(data)))
-         .catch((error) => console.log(error));
+         .then((res) => console.log(res, 'Отправка успешна'))
+         .then(dispatch(heroAdded(newHero)))
+         .catch((err) => console.log(err));
 
-      setName('');
-      setDescription('');
-      setElement('');
+      setHeroName('');
+      setHeroDescr('');
+      setHeroElement('');
+   };
+
+   const renderFilters = (filters, status) => {
+      if (status === 'loading') {
+         return <option>Загрузка элементов</option>;
+      } else if (status === 'error') {
+         return <option>Ошибка загрузки</option>;
+      }
+
+      if (filters && filters.length > 0) {
+         return filters.map(({ name, label }) => {
+            // eslint-disable-next-line
+            if (name === 'all') return;
+
+            return (
+               <option key={name} value={name}>
+                  {label}
+               </option>
+            );
+         });
+      }
    };
 
    return (
@@ -54,24 +67,24 @@ const HeroesAddForm = () => {
                className="form-control"
                id="name"
                placeholder="Как меня зовут?"
-               value={name}
-               onChange={(e) => setName(e.target.value)}
+               value={heroName}
+               onChange={(e) => setHeroName(e.target.value)}
             />
          </div>
 
          <div className="mb-3">
-            <label htmlFor="description" className="form-label fs-4">
+            <label htmlFor="text" className="form-label fs-4">
                Описание
             </label>
             <textarea
                required
-               name="description"
+               name="text"
                className="form-control"
-               id="description"
+               id="text"
                placeholder="Что я умею?"
-               value={description}
-               onChange={(e) => setDescription(e.target.value)}
                style={{ height: '130px' }}
+               value={heroDescr}
+               onChange={(e) => setHeroDescr(e.target.value)}
             />
          </div>
 
@@ -84,15 +97,11 @@ const HeroesAddForm = () => {
                className="form-select"
                id="element"
                name="element"
-               value={element}
-               onChange={(e) => setElement(e.target.value)}
+               value={heroElement}
+               onChange={(e) => setHeroElement(e.target.value)}
             >
-               <option>Я владею элементом...</option>
-               {filters.map((filter) => (
-                  <option key={filter.name} value={filter.name}>
-                     {filter.label}
-                  </option>
-               ))}
+               <option value="">Я владею элементом...</option>
+               {renderFilters(filters, filtersLoadingStatus)}
             </select>
          </div>
 
