@@ -11,6 +11,12 @@
       "name": "Богдан",
       "description": "dd",
       "element": "wind"
+    },
+    {
+      "id": "5bb6ab5a-f4fa-4df4-9d3d-8e47e21ca2bf",
+      "name": "Superman",
+      "description": "kk",
+      "element": "water"
     }
   ],
   "filters": [
