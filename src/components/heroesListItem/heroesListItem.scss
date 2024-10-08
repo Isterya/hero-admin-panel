@@ -1,0 +1,81 @@
+.heroes-list {
+   &__item {
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin-bottom: 16px;
+      padding: 12px;
+      width: 400px;
+      min-height: 160px;
+      border-radius: 10px;
+      background-color: #24263a;
+      color: white;
+      background-size: cover;
+      background-position: center;
+
+      &--fire {
+         background-image: url('../../assets/elements/fire-element.svg');
+      }
+
+      &--water {
+         background-image: url('../../assets/elements/water-element.svg');
+      }
+
+      &--wind {
+         background-image: url('../../assets/elements/wind-element.svg');
+      }
+
+      &--earth {
+         background-image: url('../../assets/elements/earth-element.svg');
+      }
+
+      &--default {
+         background-image: url('../../assets/elements/default-element.svg');
+      }
+   }
+
+   &__image {
+      width: 64px;
+      height: 64px;
+      object-fit: cover;
+      border-radius: 50%;
+   }
+
+   &__content {
+      margin-left: 12px;
+      flex: 1;
+   }
+
+   &__title {
+      font-size: 1.1rem;
+      margin: 0;
+   }
+
+   &__description {
+      font-size: 0.9rem;
+      margin: 4px 0 0;
+   }
+
+   &__delete-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 24px; /* Определяем размер кнопки */
+      height: 24px; /* Определяем размер кнопки */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: transparent; /* Убираем фон */
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+         transform: scale(1.1); /* Эффект увеличения при наведении */
+      }
+
+      &:active {
+         transform: scale(0.95); /* Эффект при нажатии */
+      }
+   }
+}

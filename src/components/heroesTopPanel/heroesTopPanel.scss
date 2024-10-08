@@ -1,0 +1,13 @@
+.heroes-header {
+   border-radius: 0 20px 0 10px;
+   width: 887px;
+   height: 68px;
+   background: #24263a;
+
+   &__greeting {
+      font-weight: 300;
+      font-size: 14px;
+      color: #dbdfea;
+      margin: 26px 0 0 17px;
+   }
+}

@@ -1,16 +1,34 @@
 .app {
-    height: 100vh;
-    overflow-y: scroll;
-    background: url('../../assets/hero_bg.jpg') center / cover no-repeat;
+   display: flex;
+   justify-content: center;
+   gap: 13px;
+   padding-top: 20px;
+
+   &__panel {
+      display: flex;
+      justify-content: center;
+   }
+
+   &__wrapper {
+      max-width: 1080px;
+      background-color: #1d1e2c;
+      height: auto;
+      border-radius: 20px;
+      margin-bottom: 30px;
+   }
+
+   &__container {
+      display: flex;
+      flex-direction: column;
+   }
 }
 
 .content {
-    display: grid;
-    grid-template-columns: 560px 440px;
-    max-width: 1040px;
-    margin: 0 auto;
-    padding-top: 50px;
-    &__interactive {
-        padding-left: 40px;
-    }
+   margin: 0 auto 0 auto;
+   padding: 15px;
+   display: flex;
+
+   &__interactive {
+      padding-left: 20px;
+   }
 }

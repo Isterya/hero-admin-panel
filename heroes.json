@@ -11,12 +11,6 @@
       "name": "Fire Hero",
       "description": "The forces of fire and sun are under my power, I am the strongest character.",
       "element": "fire"
-    },
-    {
-      "id": "6723b779-dbd0-4266-b54e-833cfbe15b6f",
-      "name": "Hero",
-      "description": "I'm just a guy.",
-      "element": "earth"
     }
   ],
   "filters": [

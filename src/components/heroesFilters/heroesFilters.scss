@@ -1,0 +1,51 @@
+.heroes-filters {
+   background-color: #24263a;
+   border-radius: 12px;
+   padding: 20px;
+   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+   max-width: 100%;
+   margin-top: 20px;
+   width: 435px;
+
+   .filters-title {
+      color: #ffffff;
+      font-size: 16px;
+      margin-bottom: 16px;
+      text-align: center;
+   }
+
+   .btn-group {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+
+      .filter-btn {
+         background-color: #1d1e2c;
+         color: #ffffff;
+         border: none;
+         border-radius: 8px;
+         padding: 10px 20px;
+         font-size: 14px;
+         transition: background-color 0.3s ease, transform 0.2s ease;
+         cursor: pointer;
+
+         &.active {
+            background-color: #4a90e2;
+            color: #ffffff;
+         }
+
+         &:hover {
+            background-color: #357abd;
+         }
+
+         &:active {
+            transform: scale(0.95);
+         }
+
+         &:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+         }
+      }
+   }
+}

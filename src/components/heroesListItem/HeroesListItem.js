@@ -1,38 +1,42 @@
+import './heroesListItem.scss';
+import closeIcon from '../../assets/close-icon.png';
+import userAvatar from '../../assets/avatar.png';
+
 const HeroesListItem = ({ name, description, element, onDelete }) => {
    let elementClassName;
 
    switch (element) {
       case 'fire':
-         elementClassName = 'bg-danger bg-gradient';
+         elementClassName = 'heroes-list__item--fire';
          break;
       case 'water':
-         elementClassName = 'bg-primary bg-gradient';
+         elementClassName = 'heroes-list__item--water';
          break;
       case 'wind':
-         elementClassName = 'bg-success bg-gradient';
+         elementClassName = 'heroes-list__item--wind';
          break;
       case 'earth':
-         elementClassName = 'bg-secondary bg-gradient';
+         elementClassName = 'heroes-list__item--earth';
          break;
       default:
-         elementClassName = 'bg-warning bg-gradient';
+         elementClassName = 'heroes-list__item--default';
    }
 
    return (
-      <li className={`card flex-row mb-4 shadow-lg text-white ${elementClassName}`}>
-         <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/1200px-Unknown_person.jpg"
-            className="img-fluid w-25 d-inline"
-            alt="unknown hero"
-            style={{ objectFit: 'cover' }}
-         />
-         <div className="card-body">
-            <h3 className="card-title">{name}</h3>
-            <p className="card-text">{description}</p>
+      <li className={`heroes-list__item ${elementClassName}`}>
+         <img src={userAvatar} className="heroes-list__image" alt="unknown hero" />
+         <div className="heroes-list__content">
+            <h3 className="heroes-list__title">{name}</h3>
+            <p className="heroes-list__description">{description}</p>
          </div>
-         <span className="position-absolute top-0 start-100 translate-middle badge border rounded-pill bg-light">
-            <button type="button" className="btn-close btn-close" onClick={onDelete} aria-label="Close"></button>
-         </span>
+
+         <button
+            type="button"
+            className="heroes-list__delete-btn"
+            onClick={onDelete}
+            aria-label="Close"
+            style={{ backgroundImage: `url(${closeIcon})` }} // Добавим фоновую картинку
+         ></button>
       </li>
    );
 };

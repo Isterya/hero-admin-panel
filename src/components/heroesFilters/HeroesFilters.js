@@ -5,7 +5,8 @@ import classNames from 'classnames';
 import store from '../../store';
 
 import { filtersChanged, fetchFilters, selectAll } from './filtersSlice';
-import Spinner from '../spinner/Spinner';
+
+import './heroesFilters.scss';
 
 const HeroesFilters = () => {
    const { filtersLoadingStatus, activeFilter } = useSelector((state) => state.filters);
@@ -20,18 +21,18 @@ const HeroesFilters = () => {
    }, []);
 
    if (filtersLoadingStatus === 'loading') {
-      return <Spinner />;
+      return <p className="filters-loading">Загрузка...</p>;
    } else if (filtersLoadingStatus === 'error') {
-      return <h5 className="text-center mt-5">Ошибка загрузки</h5>;
+      return <p className="filters-error">Ошибка загрузки</p>;
    }
 
    const renderFilters = (arr) => {
       if (arr.length === 0) {
-         return <h5 className="text-center mt-5">Фильтры не найдены</h5>;
+         return <p className="filters-not-found">Фильтры не найдены</p>;
       }
 
-      return arr.map(({ name, className, label }) => {
-         const btnClass = classNames('btn', className, {
+      return arr.map(({ name, label }) => {
+         const btnClass = classNames('filter-btn', {
             active: name === activeFilter,
          });
 
@@ -46,11 +47,9 @@ const HeroesFilters = () => {
    const elements = renderFilters(filters);
 
    return (
-      <div className="card shadow-lg mt-4">
-         <div className="card-body">
-            <p className="card-text">Отфильтруйте героев по элементам</p>
-            <div className="btn-group">{elements}</div>
-         </div>
+      <div className="heroes-filters">
+         <p className="filters-title">Отфильтруйте героев по элементам</p>
+         <div className="btn-group">{elements}</div>
       </div>
    );
 };
