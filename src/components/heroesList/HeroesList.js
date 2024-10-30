@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import { useGetHeroesQuery, useDeleteHeroMutation } from '../../api/apiSlice';
+import { useGetHeroesQuery, useDeleteHeroMutation, useUpdateHeroMutation } from '../../api/apiSlice';
 
 import HeroesListItem from '../heroesListItem/HeroesListItem';
 import Spinner from '../spinner/Spinner';
@@ -13,6 +13,7 @@ const HeroesList = () => {
    const { data: heroes = [], isLoading, isError } = useGetHeroesQuery();
 
    const [deleteHero] = useDeleteHeroMutation();
+   const [updateHero] = useUpdateHeroMutation();
 
    const activeFilter = useSelector((state) => state.filters.activeFilter);
 
@@ -35,24 +36,31 @@ const HeroesList = () => {
       []
    );
 
+   const onSave = useCallback(
+      (id, updatedHeroData) => {
+         updateHero({ id, ...updatedHeroData });
+      },
+      [updateHero]
+   );
+
    if (isLoading) {
       return <Spinner />;
    } else if (isError) {
-      return <h5 className="text-center mt-5">Ошибка загрузки</h5>;
+      return <h5 className="hero__error">Ошибка загрузки</h5>;
    }
 
    const renderHeroesList = (arr) => {
       if (arr.length === 0) {
          return (
             <CSSTransition timeout={0} classNames="hero">
-               <h5 className="text-center mt-5">Героев пока нет</h5>
+               <h5 className="hero__empty">Героев пока нет</h5>
             </CSSTransition>
          );
       }
 
       return arr.map(({ id, ...props }) => (
          <CSSTransition key={id} timeout={500} classNames="hero">
-            <HeroesListItem {...props} onDelete={() => onDelete(id)} />
+            <HeroesListItem {...props} onDelete={() => onDelete(id)} onSave={(updatedHeroData) => onSave(id, updatedHeroData)} />
          </CSSTransition>
       ));
    };

@@ -6,7 +6,15 @@ import store from '../../store';
 import { selectAll } from '../heroesFilters/filtersSlice';
 import { useCreateHeroMutation } from '../../api/apiSlice';
 
+import userFirstAvatar from '../../assets/avatars/avatar-1.svg';
+import userSecondAvatar from '../../assets/avatars/avatar-2.svg';
+import userThirdAvatar from '../../assets/avatars/avatar-3.svg';
+import userFourthAvatar from '../../assets/avatars/avatar-4.svg';
+import userFifthAvatar from '../../assets/avatars/avatar-5.svg';
+
 import './heroesAddForm.scss';
+
+const avatars = [userFirstAvatar, userSecondAvatar, userThirdAvatar, userFourthAvatar, userFifthAvatar];
 
 const HeroesAddForm = () => {
    const [heroName, setHeroName] = useState('');
@@ -20,11 +28,15 @@ const HeroesAddForm = () => {
 
    const onSubmitHandler = (e) => {
       e.preventDefault();
+
+      const randomAvatar = avatars[Math.floor(Math.random() * avatars.length)];
+
       const newHero = {
          id: uuidv4(),
          name: heroName,
          description: heroDescr,
          element: heroElement,
+         avatar: randomAvatar,
       };
 
       createHero(newHero).unwrap();

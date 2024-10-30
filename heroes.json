@@ -1,16 +1,11 @@
 {
   "heroes": [
     {
-      "id": "11bcc4a9-3b8a-47f6-9291-baffeb3049ab",
-      "name": "Water Hero",
-      "description": "I possess the element of water. The seas are mine to conquer",
-      "element": "water"
-    },
-    {
-      "id": "43c8f6f6-84f1-428f-b9f4-ef860a92f443",
-      "name": "Fire Hero",
-      "description": "The forces of fire and sun are under my power, I am the strongest character.",
-      "element": "fire"
+      "name": "Герой огня",
+      "description": "Я умею всё и даже больше",
+      "element": "fire",
+      "avatar": "/static/media/avatar-4.f13fedb9a89641bf0fc9b162d70388ee.svg",
+      "id": "ab28ddd1-9ef5-4334-9e52-53cad501777a"
     }
   ],
   "filters": [

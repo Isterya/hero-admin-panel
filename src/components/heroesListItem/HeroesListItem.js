@@ -1,10 +1,15 @@
+import { useState } from 'react';
 import './heroesListItem.scss';
-import closeIcon from '../../assets/close-icon.png';
-import userAvatar from '../../assets/avatar.png';
 
-const HeroesListItem = ({ name, description, element, onDelete }) => {
+import deleteIcon from '../../assets/delete.svg';
+import editIcon from '../../assets/edit.svg';
+
+const HeroesListItem = ({ name, description, element, avatar, onDelete, onSave }) => {
+   const [isEditing, setIsEditing] = useState(false);
+   const [editedName, setEditedName] = useState(name);
+   const [editedDescription, setEditedDescription] = useState(description);
+
    let elementClassName;
-
    switch (element) {
       case 'fire':
          elementClassName = 'heroes-list__item--fire';
@@ -22,21 +27,73 @@ const HeroesListItem = ({ name, description, element, onDelete }) => {
          elementClassName = 'heroes-list__item--default';
    }
 
+   const handleEditClick = () => {
+      setIsEditing(true);
+   };
+
+   const handleSaveClick = () => {
+      onSave({ name: editedName, description: editedDescription, element, avatar });
+      setIsEditing(false);
+   };
+
+   const handleCancelClick = () => {
+      setIsEditing(false);
+      setEditedName(name);
+      setEditedDescription(description);
+   };
+
    return (
       <li className={`heroes-list__item ${elementClassName}`}>
-         <img src={userAvatar} className="heroes-list__image" alt="unknown hero" />
+         <img src={avatar} className="heroes-list__image" alt="unknown hero" />
          <div className="heroes-list__content">
-            <h3 className="heroes-list__title">{name}</h3>
-            <p className="heroes-list__description">{description}</p>
+            {isEditing ? (
+               <>
+                  <input
+                     type="text"
+                     value={editedName}
+                     onChange={(e) => setEditedName(e.target.value)}
+                     className="heroes-list__input"
+                     placeholder="Имя героя"
+                  />
+                  <textarea
+                     value={editedDescription}
+                     onChange={(e) => setEditedDescription(e.target.value)}
+                     className="heroes-list__textarea"
+                     placeholder="Описание героя"
+                  />
+                  <div className="heroes-list__edit-actions">
+                     <button onClick={handleSaveClick} className="heroes-list__save-btn">
+                        Сохранить
+                     </button>
+                     <button onClick={handleCancelClick} className="heroes-list__cancel-btn">
+                        Отмена
+                     </button>
+                  </div>
+               </>
+            ) : (
+               <>
+                  <h3 className="heroes-list__title">{name}</h3>
+                  <p className="heroes-list__description">{description}</p>
+                  <button
+                     type="button"
+                     className="heroes-list__edit-btn"
+                     onClick={handleEditClick}
+                     aria-label="Edit"
+                  >
+                     <img src={editIcon} alt="edit icon" className="heroes-list__edit-icon" />
+                  </button>
+               </>
+            )}
          </div>
 
          <button
             type="button"
             className="heroes-list__delete-btn"
             onClick={onDelete}
-            aria-label="Close"
-            style={{ backgroundImage: `url(${closeIcon})` }} // Добавим фоновую картинку
-         ></button>
+            aria-label="Delete"
+         >
+            <img src={deleteIcon} alt="delete icon" className="heroes-list__delete-icon" />
+         </button>
       </li>
    );
 };

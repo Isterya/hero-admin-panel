@@ -24,7 +24,15 @@ export const apiSlice = createApi({
          }),
          invalidatesTags: ['Heroes'],
       }),
+      updateHero: builder.mutation({
+         query: ({ id, ...updatedHeroData }) => ({
+            url: `/heroes/${id}`,
+            method: 'PUT',
+            body: updatedHeroData,
+         }),
+         invalidatesTags: ['Heroes'],
+      }),
    }),
 });
 
-export const { useGetHeroesQuery, useCreateHeroMutation, useDeleteHeroMutation } = apiSlice;
+export const { useGetHeroesQuery, useCreateHeroMutation, useDeleteHeroMutation, useUpdateHeroMutation } = apiSlice;
