@@ -6,15 +6,10 @@ import store from '../../store';
 import { selectAll } from '../heroesFilters/filtersSlice';
 import { useCreateHeroMutation } from '../../api/apiSlice';
 
-import userFirstAvatar from '../../assets/avatars/avatar-1.svg';
-import userSecondAvatar from '../../assets/avatars/avatar-2.svg';
-import userThirdAvatar from '../../assets/avatars/avatar-3.svg';
-import userFourthAvatar from '../../assets/avatars/avatar-4.svg';
-import userFifthAvatar from '../../assets/avatars/avatar-5.svg';
-
 import './heroesAddForm.scss';
 
-const avatars = [userFirstAvatar, userSecondAvatar, userThirdAvatar, userFourthAvatar, userFifthAvatar];
+const avatarContext = require.context('../../assets/avatars', false, /\.svg$/);
+const avatars = avatarContext.keys().map(avatarContext);
 
 const HeroesAddForm = () => {
    const [heroName, setHeroName] = useState('');

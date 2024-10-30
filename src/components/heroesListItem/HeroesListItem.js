@@ -48,19 +48,23 @@ const HeroesListItem = ({ name, description, element, avatar, onDelete, onSave }
          <div className="heroes-list__content">
             {isEditing ? (
                <>
-                  <input
-                     type="text"
-                     value={editedName}
-                     onChange={(e) => setEditedName(e.target.value)}
-                     className="heroes-list__input"
-                     placeholder="Имя героя"
-                  />
-                  <textarea
-                     value={editedDescription}
-                     onChange={(e) => setEditedDescription(e.target.value)}
-                     className="heroes-list__textarea"
-                     placeholder="Описание героя"
-                  />
+                  <div className="form-group">
+                     <input
+                        type="text"
+                        value={editedName}
+                        onChange={(e) => setEditedName(e.target.value)}
+                        className="heroes-list__input"
+                        placeholder="Имя героя"
+                     />
+                  </div>
+                  <div className="form-group">
+                     <textarea
+                        value={editedDescription}
+                        onChange={(e) => setEditedDescription(e.target.value)}
+                        className="heroes-list__textarea"
+                        placeholder="Описание героя"
+                     />
+                  </div>
                   <div className="heroes-list__edit-actions">
                      <button onClick={handleSaveClick} className="heroes-list__save-btn">
                         Сохранить
